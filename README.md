@@ -1,0 +1,3 @@
+UAS TECHNOPRENEURSHIP
+Nama: Trian Rossi Karurukan
+NIm :241110111
