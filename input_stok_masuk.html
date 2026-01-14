@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHARMAFLOW - Input Stok Masuk</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>PHARMAFLOW</h2>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li class="active">
+              <a href="input_stok_masuk.html">Input Stok Masuk</a>
+            </li>
+            <li><a href="kasir.html">Kasir (POS)</a></li>
+            <li><a href="laporan.html">Laporan Stok</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="content">
+        <header>
+          <h1>Penerimaan Barang (Inbound)</h1>
+          <p>Input stok obat baru beserta data Batch dan Tanggal Kedaluarsa.</p>
+        </header>
+        <div class="grid-layout">
+          <div class="card form-card">
+            <h3>Form Input Stok Masuk</h3>
+            <form id="inventoryForm">
+              <div class="input-mode-toggle">
+                <label>Mode Input:</label>
+                <div class="toggle-buttons">
+                  <button
+                    type="button"
+                    class="toggle-btn active"
+                    data-mode="select"
+                  >
+                    Pilih dari Daftar
+                  </button>
+                  <button type="button" class="toggle-btn" data-mode="custom">
+                    Input Manual
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="productSelect">Nama Obat / Produk</label>
+                <select id="productSelect" required>
+                  <option value="" disabled selected>Pilih Obat...</option>
+                </select>
+                <input
+                  type="text"
+                  id="customProductInput"
+                  placeholder="Ketik nama obat..."
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="batchNumber">No. Batch</label>
+                  <input
+                    type="text"
+                    id="batchNumber"
+                    placeholder="Cth: B-2025-001"
+                    required
+                  />
+                  <small>Lihat di kemasan obat/box.</small>
+                </div>
+                <div class="form-group">
+                  <label for="expiryDate">Tanggal Kedaluarsa</label>
+                  <input type="date" id="expiryDate" required />
+                  <small>Penting untuk FEFO.</small>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="qty">Jumlah Masuk (Box)</label>
+                  <input
+                    type="number"
+                    id="qty"
+                    min="1"
+                    placeholder="0"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit">Simpan Stok</button>
+            </form>
+          </div>
+
+          <div class="card table-card">
+            <h3>Riwayat Input Hari Ini</h3>
+            <div class="table-responsive">
+              <table id="historyTable">
+                <thead>
+                  <tr>
+                    <th>Nama Obat</th>
+                    <th>No. Batch</th>
+                    <th>Expired</th>
+                    <th>Jumlah Masuk (Box)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Data akan diisi di sini melalui JavaScript -->
+                </tbody>
+              </table>
+              <div id="emptyState" class="empty-state">
+                <p>Belum ada data input stok hari ini.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="input.js"></script>
+  </body>
+</html>

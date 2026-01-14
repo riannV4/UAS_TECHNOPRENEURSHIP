@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHARMAFLOW - Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>PHARMAFLOW</h2>
+        </div>
+        <nav>
+          <ul>
+            <li class="active"><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="input_stok_masuk.html">Input Stok (Masuk)</a></li>
+            <li><a href="kasir.html">Kasir (POS)</a></li>
+            <li><a href="laporan.html">Laporan Stok</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header>
+          <div>
+            <h1>Dashboard</h1>
+            <p>Halo Admin, pantau kesehatan apotek Anda hari ini.</p>
+          </div>
+          <div class="date-badge" id="currentDate">Memuat tanggal...</div>
+        </header>
+
+        <div class="stats-grid">
+          <div class="card stat-card">
+            <div class="stat-info">
+              <p>Pendapatan Hari Ini</p>
+              <h3>Rp 2.500.000</h3>
+              <span class="trend up">↗ +12% naik</span>
+            </div>
+            <div class="stat-icon bg-blue">💰</div>
+          </div>
+
+          <div class="card stat-card">
+            <div class="stat-info">
+              <p>Total Transaksi</p>
+              <h3>45 Struk</h3>
+              <span class="trend">Stabil</span>
+            </div>
+            <div class="stat-icon bg-green">🧾</div>
+          </div>
+
+          <div class="card stat-card">
+            <div class="stat-info">
+              <p>Stok Menipis</p>
+              <h3>8 Item</h3>
+              <span class="trend down">Perlu Restock</span>
+            </div>
+            <div class="stat-icon bg-yellow">⚠️</div>
+          </div>
+
+          <div class="card stat-card">
+            <div class="stat-info">
+              <p>Kadaluwarsa < 3 Bln</p>
+              <h3>12 Batch</h3>
+              <span class="trend danger">Segera Retur!</span>
+            </div>
+            <div class="stat-icon bg-red">☠️</div>
+          </div>
+        </div>
+
+        <div class="dashboard-split">
+          <div class="card chart-container">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 15px;
+              "
+            >
+              <h3>Tren Penjualan</h3>
+              <select
+                style="
+                  padding: 4px;
+                  border-radius: 6px;
+                  border: 1px solid #ddd;
+                  font-size: 12px;
+                "
+              >
+                <option>Minggu Ini</option>
+                <option>Bulan Ini</option>
+              </select>
+            </div>
+            <div style="height: 300px; width: 100%">
+              <canvas id="salesChart"></canvas>
+            </div>
+          </div>
+
+          <div class="card warning-container">
+            <h3>⚠️ Early Warning FEFO</h3>
+            <p style="font-size: 12px; margin-top: 5px">
+              Prioritas obat mendekati expired.
+            </p>
+
+            <table class="mini-table">
+              <thead>
+                <tr>
+                  <th>Nama Obat</th>
+                  <th>Sisa Hari</th>
+                  <th>Stok</th>
+                </tr>
+              </thead>
+              <tbody id="warningTableBody"></tbody>
+            </table>
+            <button class="btn-text">Lihat Semua Data →</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

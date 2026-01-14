@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHARMAFLOW - Kasir</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>PHARMAFLOW</h2>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="input_stok_masuk.html">Input Stok (Masuk)</a></li>
+            <li class="active"><a href="kasir.html">Kasir (POS)</a></li>
+            <li><a href="laporan.html">Laporan Stok</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header style="margin-bottom: 24px">
+          <div>
+            <h1>Kasir / Point of Sales</h1>
+            <p>Kelola transaksi penjualan obat harian.</p>
+          </div>
+        </header>
+
+        <div class="pos-container">
+          <div class="pos-left-area">
+            <div class="search-filter-bar">
+              <div class="search-box">
+                <i class="ph ph-magnifying-glass"></i>
+                <input
+                  type="text"
+                  id="searchProduct"
+                  placeholder="Cari obat (Nama/Barcode)..."
+                />
+              </div>
+              <div class="category-pills">
+                <button class="pill active" onclick="filterCategory('all')">
+                  Semua
+                </button>
+                <button class="pill" onclick="filterCategory('Tablet')">
+                  Tablet
+                </button>
+                <button class="pill" onclick="filterCategory('Sirup')">
+                  Sirup
+                </button>
+                <button class="pill" onclick="filterCategory('Salep')">
+                  Salep
+                </button>
+              </div>
+            </div>
+
+            <div id="productGrid" class="product-grid-layout"></div>
+          </div>
+
+          <div class="pos-right-area">
+            <div class="card pos-cart-card">
+              <div class="cart-header">
+                <h3>Keranjang</h3>
+                <button class="btn-clear-text" onclick="clearCart()">
+                  Reset
+                </button>
+              </div>
+
+              <div class="cart-body" id="cartItems">
+                <div class="empty-state-cart">
+                  <i
+                    class="ph ph-shopping-cart"
+                    style="font-size: 32px; color: #d1d5db"
+                  ></i>
+                  <p>Keranjang kosong</p>
+                </div>
+              </div>
+
+              <div class="cart-footer">
+                <div class="bill-row">
+                  <span>Subtotal</span>
+                  <span id="subtotalLabel">Rp 0</span>
+                </div>
+                <div class="bill-row">
+                  <span>PPN (11%)</span>
+                  <span id="taxLabel">Rp 0</span>
+                </div>
+                <div class="bill-row total">
+                  <span>Total</span>
+                  <span id="totalLabel">Rp 0</span>
+                </div>
+
+                <button class="btn-primary btn-pay" onclick="processCheckout()">
+                  <i class="ph ph-money"></i> Bayar Sekarang
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="kasir.js"></script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHARMAFLOW - Laporan Stok</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>PHARMAFLOW</h2>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="input_stok_masuk.html">Input Stok (Masuk)</a></li>
+            <li><a href="kasir.html">Kasir (POS)</a></li>
+            <li class="active"><a href="laporan.html">Laporan Stok</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header style="margin-bottom: 24px">
+          <div>
+            <h1>Laporan Inventaris</h1>
+            <p>Pantau posisi stok, nilai aset, dan status obat.</p>
+          </div>
+          <div style="display: flex; gap: 10px">
+            <button class="btn-secondary" onclick="window.print()">
+              <i class="ph ph-printer"></i> Cetak
+            </button>
+            <button
+              class="btn-primary"
+              onclick="alert('Fitur Export Excel akan segera hadir!')"
+            >
+              <i class="ph ph-file-xls"></i> Export Excel
+            </button>
+          </div>
+        </header>
+
+        <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr)">
+          <div class="card stat-card">
+            <div class="stat-info">
+              <p>Total Item Obat</p>
+              <h3 id="totalItems">0</h3>
+            </div>
+            <div class="stat-icon bg-blue"><i class="ph ph-pill"></i></div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-info">
+              <p>Total Nilai Aset</p>
+              <h3 id="totalAssetValue">Rp 0</h3>
+            </div>
+            <div class="stat-icon bg-green"><i class="ph ph-money"></i></div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-info">
+              <p>Stok Kritis (< 10)</p>
+              <h3 id="lowStockCount" style="color: #d97706">0</h3>
+            </div>
+            <div class="stat-icon bg-yellow"><i class="ph ph-warning"></i></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="report-filter-bar">
+            <div class="search-box">
+              <i class="ph ph-magnifying-glass"></i>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari nama obat..."
+              />
+            </div>
+
+            <div class="filters">
+              <select id="categoryFilter" onchange="applyFilters()">
+                <option value="all">Semua Kategori</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Sirup">Sirup</option>
+                <option value="Salep">Salep</option>
+                <option value="Alat">Alat Kesehatan</option>
+              </select>
+
+              <select id="stockFilter" onchange="applyFilters()">
+                <option value="all">Semua Status Stok</option>
+                <option value="aman">Aman</option>
+                <option value="menipis">Menipis</option>
+                <option value="kosong">Kosong</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nama Obat</th>
+                  <th>Kategori</th>
+                  <th>Harga Beli</th>
+                  <th>Harga Jual</th>
+                  <th>Stok Akhir</th>
+                  <th>Nilai Aset</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="reportTableBody"></tbody>
+            </table>
+
+            <div
+              id="emptyState"
+              class="empty-state-table"
+              style="display: none"
+            >
+              <p>Data tidak ditemukan.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="laporan.js"></script>
+  </body>
+</html>
