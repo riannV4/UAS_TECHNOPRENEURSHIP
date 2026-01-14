@@ -1,0 +1,2 @@
+# UAS_TECHNOPRENEURSHIP
+UAS_Trian_Rossi_Karurukan_241110111
